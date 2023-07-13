@@ -114,7 +114,7 @@
         width: 100%;
         height: 100%;
         border-radius: 10px;
-        font-size: 20px;
+        font-size: 30px;
         /*font-family: 华文楷体;*/
         text-decoration: none;
         color:#fff;

@@ -1,5 +1,6 @@
 *{
     font-family: 华文楷体;
+    font-size:20px;
 }
 body{
     margin:0;
@@ -37,7 +38,7 @@ body{
 }
 .head h1{
     text-align: center;
-    font-size:40px;
+    font-size:60px;
     /*float:left;*/
     background-color: #6D7074;
     border-radius: 8px;
@@ -50,7 +51,12 @@ body{
         margin-top:30px;
         width:80%;
         height:45px;
+        border-right: 10px;
     }
+
+/*    .el-input__wrapper {*/
+/*    padding-right: 1px !important;*/
+/*}*/
     .el-input__inner{
         background-color: #EBF0F2 !important;
         border-radius: 10px 0px 0px 10px!important;
@@ -60,6 +66,7 @@ body{
         width:150px;
     }
     .el-input-group__append{
+
         border-radius: 0px 10px 10px 0px !important;
         /*background-color: #E4C2A2 !important;*/
     }

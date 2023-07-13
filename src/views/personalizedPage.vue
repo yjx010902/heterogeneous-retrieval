@@ -136,39 +136,42 @@
   }
   .searchResult li{
     float:left;
-    margin-right:2%;
-    margin-top: 20px;
+    margin-right:5%;
+    margin-top: 30px;
     list-style-type :none;
     height: 360px;
-    width: 18%;
-    background-color: pink;
+    width: 20%;
+    /*background-color: #797979;*/
+    /* box-shadow:5px 5px 5px #BBC5AF;*/
   }
 
-  .searchResult li:nth-child(5n+1){
-    margin-left: 1%;
+  .searchResult li:nth-child(4n+1){
+    margin-left: 2%;
   }
-   .searchResult li:nth-child(5n+5){
-    margin-right: 1%;
+   .searchResult li:nth-child(4n+4){
+    margin-right: 3%;
   }
    .searchResult li h4{
      margin-top: 3px;
      margin-left:3%;
+     color:#000;
    }
    .searchResult li img{
      margin-top: 10px;
      height: 280px;
      width: 94%;
      margin-left:3%;
-     background-color: yellow;
-     box-shadow:5px 5px 5px #6D7074;
+     background-color: #BBC5AF;
+
    }
    .searchResult li h5{
-          margin-top: 5px;
+     margin-top: 5px;
      float:right;
      margin-right:10px;
+
    }
    .searchResult li h5 a{
-
+       color:#000;
       text-decoration: none;
    }
 </style>
