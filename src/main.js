@@ -3,6 +3,8 @@ import App from './App.vue'
 import router from './router/router'
 import store from './store'
 import '../src/assets/css/common.css'
+// 引用axios
+import './utils/axios'
 
 // 引入element-ui
 import ElementUI from 'element-ui';

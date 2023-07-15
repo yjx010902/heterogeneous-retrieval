@@ -2,7 +2,7 @@
     <div  class="main m_page">
         <div class="head ">
             <a href="javascript:void(0);" @click="returnMain" class="return">
-                <p>< 返回</p>
+                <i class="el-icon-arrow-left"></i> <p>返回</p>
             </a>
             <h1>面向多模态数据的多维度语义检索</h1>
             <el-input placeholder="请输入内容" v-model="searchvalue">

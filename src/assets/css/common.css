@@ -54,6 +54,8 @@ body{
         border-right: 10px;
     }
 
+
+
 /*    .el-input__wrapper {*/
 /*    padding-right: 1px !important;*/
 /*}*/
@@ -64,12 +66,29 @@ body{
     }
     .el-button{
         width:150px;
+        padding:0px !important;
+    }
+
+    .head  .el-button{
+
     }
     .el-input-group__append{
 
         border-radius: 0px 10px 10px 0px !important;
         /*background-color: #E4C2A2 !important;*/
     }
+}
+
+.head a i{
+    font-size:20px;
+}
+.head a p{
+    display:inline-block;
+    width:10%;
+    margin-left: 5px;
+}
+.el-icon-arrow-lef{
+    font-size:20px;
 }
 
 /*黄色页面*/
@@ -79,6 +98,7 @@ body{
 .u_page .head{
 .el-button{
     background-color: #E4C2A2;
+
 }
 .el-input-group__append{
     background-color: #E4C2A2 !important;
