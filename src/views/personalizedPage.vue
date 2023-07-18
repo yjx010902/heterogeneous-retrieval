@@ -131,6 +131,7 @@
               this.axios.post(
                   'https://mock.apifox.cn/m1/3018081-0-default/personalizedPage2',
                   // 要求的接口data样式：
+    // { movies:
 //             [
 //     {
 //         "title": "加效政中",
@@ -152,7 +153,7 @@
 //         "poster_path": "https://image.tmdb.org/t/p/w50a/5VTNOpR8gcgV3EPUHHfMGnJYN9L.jpg",
 //         "movie_url": "http://wfydo.do/letvocuzd"
 //     }
-// ]
+// ]}
                   {searchValue:this.searchValue}
               ).then(res=>{
                 console.log(res);

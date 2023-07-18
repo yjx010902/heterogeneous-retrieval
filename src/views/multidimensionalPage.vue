@@ -150,7 +150,7 @@
                   'https://mock.apifox.cn/m1/3018081-0-default/multidimentional',
                   {
                     searchValue:this.searchvalue,
-                    // imgs:param
+                    imgs:param
                   }
 
               ).then(res=>{
