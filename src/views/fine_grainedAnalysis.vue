@@ -13,9 +13,9 @@
     <div class="title">检索结果</div>
     <div class="text">
       <ul>
-          <li v-for="item in searchResult" :key="item.label">
+          <li v-for="(item,index) in searchResult" :key="index">
               <a href="javascript:void(0);" @click="showMain(item)">
-                <h2 class="color_3">No{{item.label}}.</h2><span>{{item.name}}</span><h3 class="color_3">{{item.percent}}%</h3>
+                <h2 class="color_3">No{{index+1}}.</h2><span>{{item.name}}</span>
               </a>
           </li>
       </ul>
@@ -54,12 +54,12 @@
             },
             startSearch(){
                 this.axios.post(
-                    "https://mock.apifox.cn/m1/3018081-0-default/getResult",
+                    "https://mock.apifox.cn/m1/3018081-0-default/fine_grained",
                     {searchValue:this.searchValue}
                 ).then(res=>{
                   console.log(res);
                   if(res.status==200) {
-                    this.searchResult = res.data;
+                    this.searchResult = res.data.fileResult;
                     console.log(this.searchResult)
                   }
 

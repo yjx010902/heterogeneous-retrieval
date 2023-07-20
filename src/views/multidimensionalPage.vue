@@ -18,16 +18,16 @@
                <ul>
                     <li v-for="item in searchResult_pic" :key="item.label">
                         <a href="javascript:void(0);" @click="showPic(item)">
-                          <h2 class="color_2">No{{item.label}}.</h2><span>{{item.name}}</span><h3 class="color_2">{{item.percent}}%</h3>
+                          <h2 class="color_2">No{{item.label}}.</h2><span>{{item.name}}</span>
                         </a>
                     </li>
                 </ul>
             </el-tab-pane>
             <el-tab-pane label="文字结果" name="word">
                 <ul>
-                    <li v-for="item in searchResult_word" :key="item.label">
+                    <li v-for="(item,index) in searchResult_word" :key="index">
                         <a href="javascript:void(0);" @click="showMain(item)">
-                          <h2 class="color_2">No{{item.label}}.</h2><span>{{item.name}}</span><h3 class="color_2">{{item.percent}}%</h3>
+                          <h2 class="color_2">No{{index+1}}.</h2><span>{{item.name}}</span>
                         </a>
                     </li>
                 </ul>
@@ -57,6 +57,7 @@
                         :file-list="fileList"
                         :on-change="handleChange"
                         :on-remove="handleRemove"
+                        show-file-list
                         multiple>
                     <i class="el-icon-upload"></i>
                     <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
@@ -141,16 +142,18 @@
           },
           startSearch(){
               var param=new FormData();
-              this.fileList.forEach(
-                  (val,index)=>{
-                    param.append('file',val.raw);
-                  }
-              );
+            if(this.fileList.length!=0) {
+              console.log(this.fileList);
+              this.fileList.forEach((file) => {
+                param.append('file', file.raw)
+              })
+              console.log(param.get('file'));
+            }
               this.axios.post(
                   'https://mock.apifox.cn/m1/3018081-0-default/multidimentional',
                   {
                     searchValue:this.searchvalue,
-                    imgs:param
+                    param:param
                   }
 
               ).then(res=>{

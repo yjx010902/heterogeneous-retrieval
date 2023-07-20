@@ -98,20 +98,9 @@
           // 进入页面时获取个性化选项
            getOptions(){
               console.log('函数执行了');
-              this.axios.get(
+              this.axios.post(
               'https://mock.apifox.cn/m1/3018081-0-default/personalizedPage1'
             //       需要的后端data格式：
-            //  {
-            //   "option1": [
-            //     "qui officia ipsum culpa"
-            //   ],
-            //   "option2": [
-            //     "reprehenderit commodo",
-            //     "elit minim anim",
-            //     "voluptate",
-            //     "aliqua veniam occaecat elit"
-            //   ]
-            // }
               ).then(res=>{
                 console.log(res);
                   if(res.status==200){
@@ -131,33 +120,10 @@
               this.axios.post(
                   'https://mock.apifox.cn/m1/3018081-0-default/personalizedPage2',
                   // 要求的接口data样式：
-    // { movies:
-//             [
-//     {
-//         "title": "加效政中",
-//         "poster_path": "https://image.tmdb.org/t/p/w50a/5VTNOpR8gcgV3EPUHHfMGnJYN9L.jpg",
-//         "movie_url": "http://inqeltt.kn/jnxmhuxoi"
-//     },
-//     {
-//         "title": "能见值等",
-//         "poster_path": "https://image.tmdb.org/t/p/w500/bRDAC4GogyS9ci3ow7UnInOcrin.jpg",
-//         "movie_url": "http://nfbg.mc/hsxb"
-//     },
-//     {
-//         "title": "识斗再清并展",
-//         "poster_path": "https://image.tmdb.org/t/p/w500/bRDAC4GogyS9ci3ow7UnInocriN.ipg",
-//         "movie_url": "http://llrmgflf.tp/ekkeuiii"
-//     },
-//     {
-//         "title": "时记属龙非效争",
-//         "poster_path": "https://image.tmdb.org/t/p/w50a/5VTNOpR8gcgV3EPUHHfMGnJYN9L.jpg",
-//         "movie_url": "http://wfydo.do/letvocuzd"
-//     }
-// ]}
                   {searchValue:this.searchValue}
               ).then(res=>{
                 console.log(res);
-                  this.movies=res.data;
+                  this.movies=res.data.movies;
               })
 
           }

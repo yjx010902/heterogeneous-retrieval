@@ -67,7 +67,7 @@ export default {
         )
         .then((res) => {
           if (res.status == 200) {
-            console.log(res);
+            // console.log(res);
             this.searchResult = res.data.corrected_sent;
             this.dictionary = res.data.dep_result;
             this.userType = res.data.predict_result;

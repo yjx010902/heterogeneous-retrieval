@@ -19,9 +19,10 @@
             <div class="title">检索结果</div>
             <div class="text">
                <ul>
-                    <li v-for="item in searchResult" :key="item.label">
+                    <li v-for="(item,index) in searchResult" :key="index">
                         <a href="javascript:void(0);" @click="showMain(item)">
-                          <h2 class="color_1">No{{item.label}}.</h2><span>{{item.name}}</span><h3 class="color_1">{{item.percent}}%</h3>
+                          <h2 class="color_1">No{{index+1}}.</h2><span>{{item.name}}</span>
+<!--                          <h3 class="color_1">{{item.percent}}%</h3>-->
                         </a>
                     </li>
                 </ul>
@@ -45,12 +46,11 @@
         name: "interlingualPage",
         data(){
           return{
-            userType:['态势分析','测试评估','可信防护','攻击行为'],
             fileDialogVisible:false,
             searchValue:'',
             translation:'',
             fileUrl:'',
-            searchResult:['信息服务可信防护设备使用说明','信息服务可信防护设备使用注意事项','网络安全防护设备技术参数','信息网络安全设备']
+            searchResult:[]
           }
 
 
