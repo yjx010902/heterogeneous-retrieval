@@ -163,9 +163,10 @@
 
                 var that=this;
                 this.axios({
+                  headers:{'Content-Type':'application/x-www-form-urlencoded' },
                   method:"post",
                   url:"http://10.112.168.139:5005/multidimensionalPage/getPic",
-                  params:{picUrl:item.picUrl},
+                  data:{picUrl:item.picUrl},
                   responseType:"arraybuffer",
                 }).then(
                     res=>{
