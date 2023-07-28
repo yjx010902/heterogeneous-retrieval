@@ -53,21 +53,14 @@ export default {
       this.axios
         .post(
           // 该处为url
-          "https://mock.apifox.cn/m1/3018081-0-default/userIntent",
-            // 需要的后端接口的data格式
-            // {
-            //         "corrected_sent": "dolor culpa",
-            //         "dep_result": [
-            //           "elit cupidatat",
-            //           "labore"
-            //         ],
-            //         "predict_result": "dolore"
-            //       }
-          { value: this.searchValue }
+          // "https://mock.apifox.cn/m1/3018081-0-default/userIntent",
+            "http://10.112.168.139:5001/userIntent/getResult",
+          {searchValue:this.searchValue},
+        {headers: {'Content-Type': 'application/x-www-form-urlencoded'}}
         )
         .then((res) => {
           if (res.status == 200) {
-            // console.log(res);
+            console.log(res);
             this.searchResult = res.data.corrected_sent;
             this.dictionary = res.data.dep_result;
             this.userType = res.data.predict_result;

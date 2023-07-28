@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" v-title data-title="异构检索">
     <router-view/>
   </div>
 

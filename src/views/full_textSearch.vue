@@ -15,6 +15,7 @@
                 搜索结果
             </div>
            <div class="text">
+             <div class="noResult" v-if="searchResult.length==0">结果为空</div>
                <ul>
                     <li v-for="(item,index) in searchResult" :key="index">
                         <a href="javascript:void(0);" @click="showMain(item)">
@@ -31,7 +32,8 @@
         center>
         <el-scrollbar style="height:60vh;">
 <!--  <span>需要注意的是内容是默认不居中的</span>-->
-          <iframe frameborder="0" width="100%" height="410" :src="fileUrl"></iframe>
+<!--          <iframe frameborder="0" width="100%" height="410" :src="fileUrl"></iframe>-->
+          <span v-html="file_text"></span>
         </el-scrollbar>
 
   </el-dialog>
@@ -46,7 +48,7 @@
             fileDialogVisible:false,
             searchValue:'',
             searchResult:[],
-            fileUrl:'',
+            file_text:'',
           }
       },
         methods:{
@@ -56,11 +58,26 @@
            showMain(item){
                 this.fileDialogVisible=true;
                 this.fileUrl=item.picUrl;
+                this.axios.post(
+                    "http://10.112.168.139:5004/full_textSearch/getTxt",
+                    {picUrl:item.picUrl},
+                    {headers: {'Content-Type': 'application/x-www-form-urlencoded'}}
+                ).then(
+                    res=>{
+                      if(res.status==200){
+                        console.log(res);
+                        this.file_text=res.data.content;
+                      }
+                    }
+                )
             },
           startSearch(){
                 this.axios.post(
-                    "https://mock.apifox.cn/m1/3018081-0-default/fine_grained",
-                    {searchValue:this.searchValue}
+                    // "https://mock.apifox.cn/m1/3018081-0-default/fine_grained",
+                    "http://10.112.168.139:5004/full_textSearch/getResult",
+                    // "http://10.112.168.139:5004/full_textSearch/getTxt",
+                    {searchValue:this.searchValue},
+                     {headers: {'Content-Type': 'application/x-www-form-urlencoded'}}
                 ).then(res=>{
                   console.log(res);
                   if(res.status==200) {

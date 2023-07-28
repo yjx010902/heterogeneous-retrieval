@@ -42,8 +42,8 @@
       <ul v-for="item in movies" :key="item.title">
         <li>
           <h4>{{ item.title }}</h4>
-          <img src="item.poster_path"/>
-          <h5><a href="item.movie_url">read more >></a></h5>
+          <img :src="item.poster_path"/>
+          <h5><a :href="item.movie_url">read more >></a></h5>
         </li>
       </ul>
     </div>
@@ -89,44 +89,77 @@
             },
             add(){
               if(this.value1.length!=0&&this.value2.length!=0) {
-                this.searchValue.push({name:this.value1,label:this.value2});
+                this.searchValue.push({name:this.option1[this.value1].label,value:this.option2[this.value2].value});
                 console.log('v1', this.searchValue);
                 this.value1 = [];
                 this.value2 = [];
+                console.log(typeof(this.searchValue));
+                let searchJson=JSON.stringify(this.searchValue);
+                console.log(typeof(searchJson));
+                console.log((searchJson));
+
               }
           },
           // 进入页面时获取个性化选项
            getOptions(){
               console.log('函数执行了');
-              this.axios.post(
-              'https://mock.apifox.cn/m1/3018081-0-default/personalizedPage1'
-            //       需要的后端data格式：
+              this.axios.get(
+              // 'https://mock.apifox.cn/m1/3018081-0-default/personalizedPage1'
+                  'http://10.112.168.139:5002/personalizedPage/getResult1 ',
+
+                  //       需要的后端data格式：
               ).then(res=>{
-                console.log(res);
                   if(res.status==200){
+                    console.log(typeof (res.data.trim()));
+                res.data=res.data.replace(/NaN/g,"\"NaN\"");
+                res.data=JSON.parse(res.data);
                     if(this.option1 === undefined) {
-  this.potion1 = []
-}
-                    for(var i=0;i<res.data.option1.length;i++) {
-                      this.option1.push({value:res.data.option1[i],label:res.data.option1[i]});
+                      this.potion1 = []
                     }
-                     for(i=0;i<res.data.option2.length;i++) {
-                      this.option2.push({value:res.data.option2[i],label:res.data.option2[i]})
+                    console.log(res.data.option1);
+                    for(var i=0;i<10;i++) {
+                      this.option1.push({value:i,label:res.data.option1[i]});
                     }
+                    console.log(this.option1)
+                     for(var obj2 in res.data.option2) {
+                      this.option2.push({value:obj2,label:obj2})
+                    }
+                     console.log(this.option2)
                   }
               });
           },
           startSearch(){
+              console.log(typeof(this.searchValue));
+            console.log(this.searchValue);
+             let searchJson=JSON.stringify(this.searchValue);
+                console.log(typeof(searchJson));
+                console.log((searchJson));
               this.axios.post(
-                  'https://mock.apifox.cn/m1/3018081-0-default/personalizedPage2',
+                  // 'https://mock.apifox.cn/m1/3018081-0-default/personalizedPage2',
                   // 要求的接口data样式：
-                  {searchValue:this.searchValue}
+                  'http://10.112.168.139:5002/personalizedPage/getResult2',
+                  {
+                    // searchValue1:this.option1,
+                    // searchValue2:this.option2,
+                    searchValue:searchJson
+                  },
+                  {
+                    headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+                }
+               }
               ).then(res=>{
                 console.log(res);
-                  this.movies=res.data.movies;
-              })
+                  this.movies=res.data;
+              }).catch(function(error) {
+        console.log(error);
+      })
 
           }
+
+
+
+
         },
 
     }

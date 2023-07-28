@@ -35,7 +35,8 @@
         center>
         <el-scrollbar style="height:60vh;">
 <!--  <span>需要注意的是内容是默认不居中的</span>-->
-          <iframe frameborder="0" width="100%" height="410" :src="fileUrl"></iframe>
+<!--          <iframe frameborder="0" width="100%" height="410" :src="fileUrl"></iframe>-->
+          <span v-html="fileData"></span>
         </el-scrollbar>
 
   </el-dialog>
@@ -43,6 +44,7 @@
 </template>
 <script>
     export default {
+
         name: "interlingualPage",
         data(){
           return{
@@ -50,7 +52,9 @@
             searchValue:'',
             translation:'',
             fileUrl:'',
-            searchResult:[]
+            searchResult:[],
+            searchResult1:[],
+            fileData:''
           }
 
 
@@ -61,20 +65,47 @@
             },
           startSearch(){
               this.axios.post(
-                  "https://mock.apifox.cn/m1/3018081-0-default/interlingual",
-                  {searchValue:this.searchValue}
+                  // "https://mock.apifox.cn/m1/3018081-0-default/interlingual",
+                  "http://10.112.168.139:5006/interlingualPage/getResult",
+                  {searchValue:this.searchValue},
+                  {
+                    headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+                  }
+                  }
               ).then(res=>{
                 if(res.status==200){
                   console.log(res);
                   this.translation=res.data.translation;
                   this.searchResult=res.data.searchResult;
+                  for(var i=0;i<this.searchResult.length;i++)
+                  {
+
+                    var name = this.searchResult[i].substring(this.searchResult[i].lastIndexOf("/") + 1);
+
+                    this.searchResult1.push({url:this.searchResult[i],name:name})
+                  }
+                  console.log(this.searchResult1);
                 }
               })
           },
           showMain(item){
                 this.fileDialogVisible=true;
-                this.fileUrl=item.picUrl;
-            }
+                this.axios.post(
+                  "http://10.112.168.139:5006/interlingualPage/getTxt",
+                  {picUrl:item.picUrl},
+                  {headers: {'Content-Type': 'application/x-www-form-urlencoded'
+                  }
+                  }
+              ).then(
+                  (res)=>{
+                    console.log(res);
+                    this.fileData=res.data.content;
+                  }
+              )
+            },
+
+
         }
     }
 </script>

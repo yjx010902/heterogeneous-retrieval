@@ -220,3 +220,7 @@ body{
 .bgcolor_3{
     background-color:#E5A19E;
 }
+
+.noResult{
+    text-align: center !important;
+}

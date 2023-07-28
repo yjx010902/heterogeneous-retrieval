@@ -28,7 +28,8 @@
         center>
         <el-scrollbar style="height:60vh;">
 <!--  <span>需要注意的是内容是默认不居中的</span>-->
-          <iframe frameborder="0" width="100%" height="410" :src="fileUrl"></iframe>
+<!--          <iframe frameborder="0" width="100%" height="410" :src="fileUrl"></iframe>-->
+              <span v-html="file_text"></span>
         </el-scrollbar>
 
   </el-dialog>
@@ -41,7 +42,7 @@
         name: "fine_grainedAnalysis",
       data(){
           return{
-            fileUrl:'https://chi101linglingshih.files.wordpress.com/2018/01/dang-ni-lao-le_lyrics-in-chinese-and-pinyin.pdf',
+            file_text:'',
             fileDialogVisible:false,
             searchResult:[],
             searchValue:'',
@@ -54,12 +55,17 @@
             },
             startSearch(){
                 this.axios.post(
-                    "https://mock.apifox.cn/m1/3018081-0-default/fine_grained",
-                    {searchValue:this.searchValue}
+                    // "https://mock.apifox.cn/m1/3018081-0-default/fine_grained",
+                    "http://10.112.168.139:5003/fine_grainedAnalysis/getResult",
+                    {searchValue:this.searchValue},
+                    {headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+              }
+            }
                 ).then(res=>{
                   console.log(res);
                   if(res.status==200) {
-                    this.searchResult = res.data.fileResult;
+                    this.searchResult = res.data;
                     console.log(this.searchResult)
                   }
 
@@ -67,7 +73,7 @@
             },
             showMain(item){
                 this.fileDialogVisible=true;
-                this.fileUrl=item.picUrl;
+                this.file_text=item.content;
             }
 
         }

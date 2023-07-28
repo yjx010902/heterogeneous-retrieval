@@ -12,27 +12,26 @@
         </div>
       <div class="margin">
         <div class="title">检索结果</div>
-        <div class="text">
-           <el-tabs v-model="activeName" @tab-click="searchResultChoose">
-            <el-tab-pane label="图片结果" name="pic">
+<!--        显示图片-->
+        <div class="text" v-if="imgShow=true">
                <ul>
-                    <li v-for="item in searchResult_pic" :key="item.label">
+                    <li v-for="(item,index) in searchResult_pic" :key="index">
                         <a href="javascript:void(0);" @click="showPic(item)">
-                          <h2 class="color_2">No{{item.label}}.</h2><span>{{item.name}}</span>
-                        </a>
-                    </li>
-                </ul>
-            </el-tab-pane>
-            <el-tab-pane label="文字结果" name="word">
-                <ul>
-                    <li v-for="(item,index) in searchResult_word" :key="index">
-                        <a href="javascript:void(0);" @click="showMain(item)">
                           <h2 class="color_2">No{{index+1}}.</h2><span>{{item.name}}</span>
                         </a>
                     </li>
                 </ul>
-            </el-tab-pane>
-           </el-tabs>
+        </div>
+<!--        显示文本-->
+        <div class="text" v-if="fileShow=true">
+<!--          <span v-html="fileData"></span>-->
+           <ul>
+                    <li v-for="(item,index) in searchResult_word" :key="index">
+                        <a href="javascript:void(0);" >
+                          <h2 class="color_2">No{{index+1}}.</h2><span>{{item.name}}</span>
+                        </a>
+                    </li>
+                </ul>
         </div>
       </div>
 <!--      图片获取的弹窗-->
@@ -51,12 +50,10 @@
                 <el-upload
                         class="upload-demo"
                         drag
-                        action="#"
-                        :headers="headers"
-                        :auto-upload="false"
+                        action="http://10.112.168.139:5005/multidimensionalPage/getResult/img"
+                        name="param"
                         :file-list="fileList"
-                        :on-change="handleChange"
-                        :on-remove="handleRemove"
+                        :on-success="uploadSuccess"
                         show-file-list
                         multiple>
                     <i class="el-icon-upload"></i>
@@ -76,20 +73,8 @@
   :visible.sync="pictureDialogVisible"
   width="50%"
   center>
-  <img :src="fileUrl" alt="i按错误tu"/>
+        <img :src="fileUrl" alt="不正常"/>
 </el-dialog>
-<!--      预览文本的弹窗-->
-       <el-dialog
-        title="文件预览"
-        :visible.sync="fileDialogVisible"
-        width="50%"
-        center>
-        <el-scrollbar style="height:60vh;">
-<!--  <span>需要注意的是内容是默认不居中的</span>-->
-          <iframe frameborder="0" width="100%" height="410" :src="fileUrl"></iframe>
-        </el-scrollbar>
-
-  </el-dialog>
     </div>
 </template>
 
@@ -108,13 +93,11 @@
                 dialogVisible: false,
                 fileUrl:'',
                 fileList:[],
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                },
-              activeName:'',
-
-
-
+                activeName:'',
+                imgShow:false,
+                fileShow:false,
+                fileData:'',
+                // headers:{'Content-Type':'multipart/form-data' }
             }
         },
         methods: {
@@ -131,37 +114,31 @@
                 console.log('filelist',this.fileList);
                 this.centerDialogVisible = false;
             },
-            //上传图片
-            handleChange(file, fileList) { //文件数量改变
-              this.fileList = fileList;
-              console.log('change',this.fileList)
-            },
-          handleRemove(file,fileList){
-              this.fileList=fileList;
-              console.log('remove',this.fileList)
+          uploadSuccess(response,file,fileList){
+              this.fileShow=true;
+              this.imgShow=false;
+              console.log(file);
+              console.log(fileList);
+              console.log(response);
+              this.searchResult_word=response.searchResult_word;
+              console.log(this.searchResult_word);
           },
+          //文本搜索
           startSearch(){
-              var param=new FormData();
-            if(this.fileList.length!=0) {
-              console.log(this.fileList);
-              this.fileList.forEach((file) => {
-                param.append('file', file.raw)
-              })
-              console.log(param.get('file'));
-            }
+              this.imgShow=true;
+              this.fileShow=false;
               this.axios.post(
-                  'https://mock.apifox.cn/m1/3018081-0-default/multidimentional',
+                  // 'https://mock.apifox.cn/m1/3018081-0-default/multidimentional',
+                  'http://10.112.168.139:5005/multidimensionalPage/getResult/word',
                   {
-                    searchValue:this.searchvalue,
-                    param:param
-                  }
-
+                    searchValue:this.searchValue,
+                  },
+                  {headers:{'Content-Type':'application/x-www-form-urlencoded' }}
               ).then(res=>{
                     if(res.status==200){
                       {
                         console.log(res);
-                        this.searchResult_pic=res.data.searchResult_pic;
-                        this.searchResult_word=res.data.searchResult_word;
+                        this.searchResult_pic=res.data.searchResult_pic
                       }
                     }
               })
@@ -169,13 +146,33 @@
           searchResultChoose(){
               console.log(this.activeName);
           },
-           showMain(item){
-                this.fileDialogVisible=true;
-                this.fileUrl=item.picUrl;
-            },
+          arrayBufferToBase64(buffer) {
+            //第一步，将ArrayBuffer转为二进制字符串
+            var binary = "";
+            var bytes = new Uint8Array(buffer);
+            var len = bytes.byteLength;
+            for (var i = 0; i < len; i++) {
+              binary += String.fromCharCode(bytes[i]);
+            }
+            //将二进制字符串转为base64字符串
+            return window.btoa(binary);
+          },
            showPic(item){
                 this.pictureDialogVisible=true;
                 this.fileUrl=item.picUrl;
+
+                var that=this;
+                this.axios({
+                  method:"post",
+                  url:"http://10.112.168.139:5005/multidimensionalPage/getPic",
+                  params:{picUrl:item.picUrl},
+                  responseType:"arraybuffer",
+                }).then(
+                    res=>{
+                      that.fileUrl=
+                          "data:image/jpeg;base64," + that.arrayBufferToBase64(res.data);
+                    }
+                )
             }
 
         }
