@@ -42,7 +42,7 @@
       <ul v-for="item in movies" :key="item.title">
         <li>
           <h4>{{ item.title }}</h4>
-          <img :src="item.poster_path"/>
+          <img :src="fileUrls[item.poster_path]"/>
           <h5><a :href="item.movie_url">read more >></a></h5>
         </li>
       </ul>
@@ -81,6 +81,7 @@
         option1:[],
         option2:[],
         movies:[],
+        fileUrls: {'1':'1'},
             }
         },
         methods:{
@@ -109,15 +110,16 @@
 
                   //       需要的后端data格式：
               ).then(res=>{
-                  if(res.status==200){
-                    console.log(typeof (res.data.trim()));
-                res.data=res.data.replace(/NaN/g,"\"NaN\"");
-                res.data=JSON.parse(res.data);
+                //   if(res.status==200){
+                //     console.log(res.data);
+                //     console.log(typeof (res.data));
+                // res.data=res.data.replace(/NaN/g,"\"NaN\"");
+                // res.data=JSON.parse(res.data);
                     if(this.option1 === undefined) {
                       this.potion1 = []
                     }
                     console.log(res.data.option1);
-                    for(var i=0;i<10;i++) {
+                    for(var i=0;i<res.data.option1.length;i++) {
                       this.option1.push({value:i,label:res.data.option1[i]});
                     }
                     console.log(this.option1)
@@ -125,8 +127,43 @@
                       this.option2.push({value:obj2,label:obj2})
                     }
                      console.log(this.option2)
-                  }
+
               });
+          },
+          arrayBufferToBase64(buffer) {
+            //第一步，将ArrayBuffer转为二进制字符串
+            var binary = "";
+            var bytes = new Uint8Array(buffer);
+            var len = bytes.byteLength;
+            for (var i = 0; i < len; i++) {
+              binary += String.fromCharCode(bytes[i]);
+            }
+            //将二进制字符串转为base64字符串
+            return window.btoa(binary);
+          },
+          getPic(url){
+              let fileUrl='';
+              let that=this;
+              console.log("执行getpic");
+              // console.log(url);
+              this.axios({
+                  headers:{'Content-Type':'application/x-www-form-urlencoded' },
+                  method:"post",
+                  url:"http://10.112.168.139:5002/personalizedPage/getPoster",
+                  data:{poster_path:url},
+                  responseType:"arraybuffer",
+                }).then(
+                    res=>{
+                      console.log(res);
+                      fileUrl=
+                          "data:image/jpeg;base64," + that.arrayBufferToBase64(res.data);
+                      // console.log("getpic中的fileurl"+fileUrl);
+                      // let dict={url:fileUrl};
+                      // this.fileUrls.push(dict);
+                      this.$set(this.fileUrls,url,fileUrl);
+                      console.log('fileUrls'+this.fileUrls);
+                    }
+                )
           },
           startSearch(){
               console.log(typeof(this.searchValue));
@@ -139,8 +176,6 @@
                   // 要求的接口data样式：
                   'http://10.112.168.139:5002/personalizedPage/getResult2',
                   {
-                    // searchValue1:this.option1,
-                    // searchValue2:this.option2,
                     searchValue:searchJson
                   },
                   {
@@ -151,11 +186,19 @@
               ).then(res=>{
                 console.log(res);
                   this.movies=res.data;
+                  console.log('movies'+this.movies);
+                   for(var i=0;i<this.movies.length;i++){
+                     let movie=this.movies[i];
+                    console.log('movie'+movie.poster_path);
+                    this.getPic(movie.poster_path);
+                  }
               }).catch(function(error) {
-        console.log(error);
+                  console.log(error);
       })
 
-          }
+
+          },
+
 
 
 
@@ -202,7 +245,7 @@
   margin-top: 30px;
   list-style-type: none;
   height: 360px;
-  width: 20%;
+  width: 18%;
   /*background-color: #797979;*/
   /* box-shadow:5px 5px 5px #BBC5AF;*/
 }
@@ -223,7 +266,7 @@
   height: 280px;
   width: 94%;
   margin-left: 3%;
-  background-color: #bbc5af;
+  /*background-color: #bbc5af;*/
 }
 .searchResult li h5 {
   margin-top: 5px;

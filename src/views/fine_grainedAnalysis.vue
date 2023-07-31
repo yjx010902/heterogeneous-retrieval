@@ -65,7 +65,7 @@
                 ).then(res=>{
                   console.log(res);
                   if(res.status==200) {
-                    this.searchResult = res.data;
+                    this.searchResult = res.data.fileResult;
                     console.log(this.searchResult)
                   }
 

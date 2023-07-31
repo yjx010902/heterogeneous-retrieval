@@ -115,8 +115,10 @@
                 this.centerDialogVisible = false;
             },
           uploadSuccess(response,file,fileList){
-              this.fileShow=true;
+              console.log('开始执行');
               this.imgShow=false;
+              this.fileShow=true;
+              console.log('imgshow_false',this.imgShow);
               console.log(file);
               console.log(fileList);
               console.log(response);
@@ -127,6 +129,7 @@
           startSearch(){
               this.imgShow=true;
               this.fileShow=false;
+              let that=this;
               this.axios.post(
                   // 'https://mock.apifox.cn/m1/3018081-0-default/multidimentional',
                   'http://10.112.168.139:5005/multidimensionalPage/getResult/word',
@@ -137,6 +140,8 @@
               ).then(res=>{
                     if(res.status==200){
                       {
+                        console.log('imgshow_true',that.imgShow);
+                        console.log('txtshow_false',that.fileShow);
                         console.log(res);
                         this.searchResult_pic=res.data.searchResult_pic
                       }
