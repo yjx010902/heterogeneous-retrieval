@@ -66,7 +66,7 @@
           startSearch(){
               this.axios.post(
                   // "https://mock.apifox.cn/m1/3018081-0-default/interlingual",
-                  "http://10.112.168.139:5006/interlingualPage/getResult",
+                  "http://192.168.13.26:5006/interlingualPage/getResult",
                   {searchValue:this.searchValue},
                   {
                     headers: {
@@ -92,7 +92,7 @@
           showMain(item){
                 this.fileDialogVisible=true;
                 this.axios.post(
-                  "http://10.112.168.139:5006/interlingualPage/getTxt",
+                  "http://192.168.13.26:5006/interlingualPage/getTxt",
                   {picUrl:item.picUrl},
                   {headers: {'Content-Type': 'application/x-www-form-urlencoded'
                   }

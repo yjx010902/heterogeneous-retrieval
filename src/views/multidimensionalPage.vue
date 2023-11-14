@@ -50,7 +50,7 @@
                 <el-upload
                         class="upload-demo"
                         drag
-                        action="http://10.112.168.139:5005/multidimensionalPage/getResult/img"
+                        action="http://192.168.13.26:5005/multidimensionalPage/getResult/img"
                         name="param"
                         :file-list="fileList"
                         :on-success="uploadSuccess"
@@ -132,7 +132,7 @@
               let that=this;
               this.axios.post(
                   // 'https://mock.apifox.cn/m1/3018081-0-default/multidimentional',
-                  'http://10.112.168.139:5005/multidimensionalPage/getResult/word',
+                  'http://192.168.13.26:5005/multidimensionalPage/getResult/word',
                   {
                     searchValue:this.searchValue,
                   },
@@ -170,7 +170,7 @@
                 this.axios({
                   headers:{'Content-Type':'application/x-www-form-urlencoded' },
                   method:"post",
-                  url:"http://10.112.168.139:5005/multidimensionalPage/getPic",
+                  url:"http://192.168.13.26:5005/multidimensionalPage/getPic",
                   data:{picUrl:item.picUrl},
                   responseType:"arraybuffer",
                 }).then(

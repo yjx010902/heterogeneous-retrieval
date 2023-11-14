@@ -59,7 +59,7 @@
                 this.fileDialogVisible=true;
                 this.fileUrl=item.picUrl;
                 this.axios.post(
-                    "http://10.112.168.139:5004/full_textSearch/getTxt",
+                    "http://192.168.13.26:5004/full_textSearch/getTxt",
                     {picUrl:item.picUrl},
                     {headers: {'Content-Type': 'application/x-www-form-urlencoded'}}
                 ).then(
@@ -74,7 +74,7 @@
           startSearch(){
                 this.axios.post(
                     // "https://mock.apifox.cn/m1/3018081-0-default/fine_grained",
-                    "http://10.112.168.139:5004/full_textSearch/getResult",
+                    "http://192.168.13.26:5004/full_textSearch/getResult",
                     // "http://10.112.168.139:5004/full_textSearch/getTxt",
                     {searchValue:this.searchValue},
                      {headers: {'Content-Type': 'application/x-www-form-urlencoded'}}

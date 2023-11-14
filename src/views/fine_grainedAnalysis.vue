@@ -56,7 +56,7 @@
             startSearch(){
                 this.axios.post(
                     // "https://mock.apifox.cn/m1/3018081-0-default/fine_grained",
-                    "http://10.112.168.139:5003/fine_grainedAnalysis/getResult",
+                    "http://192.168.13.26:5003/fine_grainedAnalysis/getResult",
                     {searchValue:this.searchValue},
                     {headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'

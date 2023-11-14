@@ -77,33 +77,37 @@
 </style>
 <style>
     .head{
-        height: 42% !important;
+        height: 30% !important;
     }
     .head h1{
         text-align: center;
         font-size:40px;
         /*float:left;*/
-        background-color: #6D7074;
+        /*background-color: #6D7074;*/
         border-radius: 8px;
         color:#fff;
         padding-top:10%;
     }
     .foot{
-        height: 58%;
-
+        height: 55%;
+        background-color: rgba(255,255,255,50%);
+        border:3px solid #fff;
+        margin-left:10%;
+        width:80%;
+        border-radius: 25px;
     }
     .btn{
         /*外观设置*/
         display:block;
-        background-color: pink;
-        height: 25%;
+        background-color: #f8f9fd;
+        height: 30%;
         width: 22%;
         border-radius: 10px;
         /*位置设置*/
         float:left;
         margin-left:5%;
         margin-right: 7%;
-        margin-top:80px;
+        margin-top:4%;
     }
     .btn:nth-child(3),.btn:nth-child(6){
         margin-right: 0;
@@ -117,30 +121,33 @@
         font-size: 30px;
         /*font-family: 华文楷体;*/
         text-decoration: none;
-        color:#fff;
+        color:#000;
         text-align: center;
 
     }
     .btn a p{
         padding-top:30px;
     }
-    .c1 a{
-        background-color: #E4C2A2;
+    .btn a:hover{
+      background-color: #409eff;
     }
-    .c1 a:hover{
-        background-color: #DDB087;
-    }
-    .c2 a{
-        background-color: #B2BAA9;
-    }
-    .c2 a:hover{
-        background-color: #88937D;
-    }
-    .c3 a{
-        background-color: #E5A19E;
-    }
-    .c3 a:hover{
-        background-color: #C0837F;
-    }
+    /*.c1 a{*/
+    /*    background-color: #E4C2A2;*/
+    /*}*/
+    /*.c1 a:hover{*/
+    /*    background-color: #DDB087;*/
+    /*}*/
+    /*.c2 a{*/
+    /*    background-color: #B2BAA9;*/
+    /*}*/
+    /*.c2 a:hover{*/
+    /*    background-color: #88937D;*/
+    /*}*/
+    /*.c3 a{*/
+    /*    background-color: #E5A19E;*/
+    /*}*/
+    /*.c3 a:hover{*/
+    /*    background-color: #C0837F;*/
+    /*}*/
 
 </style>

@@ -106,7 +106,7 @@
               console.log('函数执行了');
               this.axios.get(
               // 'https://mock.apifox.cn/m1/3018081-0-default/personalizedPage1'
-                  'http://10.112.168.139:5002/personalizedPage/getResult1 ',
+                  'http://192.168.13.26:5002/personalizedPage/getResult1 ',
 
                   //       需要的后端data格式：
               ).then(res=>{
@@ -149,7 +149,7 @@
               this.axios({
                   headers:{'Content-Type':'application/x-www-form-urlencoded' },
                   method:"post",
-                  url:"http://10.112.168.139:5002/personalizedPage/getPoster",
+                  url:"http://192.168.13.26:5002/personalizedPage/getPoster",
                   data:{poster_path:url},
                   responseType:"arraybuffer",
                 }).then(
@@ -174,7 +174,7 @@
               this.axios.post(
                   // 'https://mock.apifox.cn/m1/3018081-0-default/personalizedPage2',
                   // 要求的接口data样式：
-                  'http://10.112.168.139:5002/personalizedPage/getResult2',
+                  'http://192.168.13.26:5002/personalizedPage/getResult2',
                   {
                     searchValue:searchJson
                   },

@@ -54,7 +54,7 @@ export default {
         .post(
           // 该处为url
           // "https://mock.apifox.cn/m1/3018081-0-default/userIntent",
-            "http://10.112.168.139:5001/userIntent/getResult",
+            "http://192.168.13.26:5001/userIntent/getResult",
           {searchValue:this.searchValue},
         {headers: {'Content-Type': 'application/x-www-form-urlencoded'}}
         )

@@ -10,21 +10,22 @@ body{
 }
 .main{
     height: 100%;
-    width:80%;
+    width:100%;
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     margin: auto;
-    background-color: #FFF9F0;
+    /*background-color: #FFF9F0;*/
+    background-image:url("~@/assets/background.png");
 }
 .head{
     height:35%;
     /*margin-top: 8%;*/
     /*margin-bottom: 8%;*/
-    background-color: #6D7074;
-    border-radius: 8px;
+    /*background-color: #6D7074;*/
+    /*border-radius: 8px;*/
 }
 
 .head .return{
@@ -40,21 +41,20 @@ body{
     text-align: center;
     font-size:60px;
     /*float:left;*/
-    background-color: #6D7074;
+    /*background-color: #6D7074;*/
     border-radius: 8px;
-    color:#fff;
-    padding-top:4%;
+    color:#000;
+    padding-top:6%;
 }
-.head{
-    .el-input{
-        margin-left:10%;
-        margin-top:30px;
-        width:80%;
-        height:45px;
-        border-right: 10px;
-    }
+.head {
 
-
+    .el-input {
+    margin-left: 10%;
+    margin-top: 30px;
+    width: 80%;
+    height: 45px;
+    border-right: 10px;
+}
 
 /*    .el-input__wrapper {*/
 /*    padding-right: 1px !important;*/
