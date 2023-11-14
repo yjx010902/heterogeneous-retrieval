@@ -77,7 +77,7 @@
 </style>
 <style>
     .head{
-        height: 30% !important;
+        height: 30%;
     }
     .head h1{
         text-align: center;
@@ -90,16 +90,11 @@
     }
     .foot{
         height: 55%;
-        background-color: rgba(255,255,255,50%);
-        border:3px solid #fff;
-        margin-left:10%;
-        width:80%;
-        border-radius: 25px;
     }
     .btn{
         /*外观设置*/
         display:block;
-        background-color: #f8f9fd;
+        background-color: rgba(248,249,253,80%);
         height: 30%;
         width: 22%;
         border-radius: 10px;
@@ -129,7 +124,7 @@
         padding-top:30px;
     }
     .btn a:hover{
-      background-color: #409eff;
+      background-color: rgba(64,158,255,100%);
     }
     /*.c1 a{*/
     /*    background-color: #E4C2A2;*/

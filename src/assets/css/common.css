@@ -19,6 +19,7 @@ body{
     margin: auto;
     /*background-color: #FFF9F0;*/
     background-image:url("~@/assets/background.png");
+    background-size:100% 100%;
 }
 .head{
     height:35%;
@@ -39,7 +40,7 @@ body{
 }
 .head h1{
     text-align: center;
-    font-size:60px;
+    /*font-size:60px;*/
     /*float:left;*/
     /*background-color: #6D7074;*/
     border-radius: 8px;
@@ -47,7 +48,6 @@ body{
     padding-top:6%;
 }
 .head {
-
     .el-input {
     margin-left: 10%;
     margin-top: 30px;
@@ -60,6 +60,8 @@ body{
 /*    padding-right: 1px !important;*/
 /*}*/
     .el-input__inner{
+    border:2px solid #006eff;
+    /*border-image:linear-gradient(140deg,#1aadfe,#006eff);*/
         background-color: #EBF0F2 !important;
         border-radius: 10px 0px 0px 10px!important;
         height: 45px;
@@ -67,16 +69,15 @@ body{
     .el-button{
         width:150px;
         padding:0px !important;
-    }
-
-    .head  .el-button{
 
     }
+
     .el-input-group__append{
-
+        background-color: #006eff;
         border-radius: 0px 10px 10px 0px !important;
         /*background-color: #E4C2A2 !important;*/
     }
+
 }
 
 .head a i{
@@ -91,12 +92,22 @@ body{
     font-size:20px;
 }
 
+.foot{
+    margin-top:20px;
+        background-color: rgba(255,255,255,30%);
+        border:3px solid #fff;
+        margin-left:10%;
+        width:80%;
+        border-radius: 25px;
+    }
+
 /*黄色页面*/
 .u_page .title{
     background-color:  #E4C2A2;
 }
 .u_page .head{
 .el-button{
+    color:#fff;
     background-color: #E4C2A2;
 
 }
@@ -133,7 +144,7 @@ body{
 }
 
 .margin{
-    background-color: #FFF9F0;
+    /*background-color: #FFF9F0;*/
     margin-top:20px;
 }
 
@@ -143,11 +154,13 @@ body{
     width: 16%;
     height: 70px;
     /*background-color: pink;*/
-    border-radius: 10px;
+    /*border-radius: 10px;*/
     text-align: center;
     line-height: 70px;
     font-weight:600;
-    color:#fff;
+    color:#000;
+    /*border-bottom:1px solid #006eff;*/
+    /*下划线*/
 }
 .text{
     margin-top:40px;
