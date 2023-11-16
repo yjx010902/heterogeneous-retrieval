@@ -1,5 +1,5 @@
 <template>
-    <div class="main page0">
+    <div class="main page0" >
         <div class="head">
             <h1>国产化平台异构库检索分析处理系统</h1>
         </div>
@@ -88,7 +88,7 @@
         color:#fff;
         padding-top:10%;
     }
-    .foot{
+    .page0 .foot{
         height: 55%;
     }
     .btn{
