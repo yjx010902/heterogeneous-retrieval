@@ -7,9 +7,10 @@
             <h1>面向多模态数据的多维度语义检索</h1>
             <el-input placeholder="请输入内容" v-model="searchValue">
                 <i slot="suffix" class="el-icon-picture-outline-round " @click="centerDialogVisible = true" ></i>
-                <el-button slot="append" @click="startSearch">搜索</el-button>
+                <el-button slot="append" icon="el-icon-search" @click="startSearch"></el-button>
             </el-input>
         </div>
+     <div class="foot" v-if="">
       <div class="margin">
         <div class="title">检索结果</div>
 <!--        显示图片-->
@@ -34,6 +35,7 @@
                 </ul>
         </div>
       </div>
+       </div>
 <!--      图片获取的弹窗-->
        <el-dialog
                     title="提示"
@@ -258,7 +260,16 @@
       margin-left: 10%;
     }
 
+.foot{
+    margin-top:20px;
+        background-color: rgba(255,255,255,30%);
+        border:3px solid #fff;
+        margin-left:10%;
+        width:80%;
+        border-radius: 25px;
+    }
+.m_page .title{
 
-
+}
 
 </style>

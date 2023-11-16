@@ -10,6 +10,9 @@
       <!--                <el-button slot="append" >搜索</el-button>-->
       <!--            </el-input>-->
     </div>
+
+
+
     <div class="margin">
       <!--        <div class="title bgcolor_2">-->
       <!--          用户偏好-->
@@ -33,11 +36,15 @@
           >
           </el-option>
         </el-select>
-        <el-button class="add" @click="add">添加</el-button>
-        <el-button class="search" @click="startSearch">搜索</el-button>
+        <el-button class="add" icon="el-icon-plus" @click="add"></el-button>
+        <el-button class="search" icon="el-icon-search" @click="startSearch"></el-button>
       </div>
-      <div class="title bgcolor_2">搜索结果</div>
     </div>
+      <div class="foot" >
+       <!-- <div class="title bgcolor_2">搜索结果</div>-->
+         <div class="title">搜索结果</div>
+
+ <div class="text" >
     <div class="searchResult">
       <ul v-for="item in movies" :key="item.title">
         <li>
@@ -47,8 +54,11 @@
         </li>
       </ul>
     </div>
+ </div>
 
+     </div>
   </div>
+
 </template>
 
 <script>
@@ -215,6 +225,7 @@
 .p_page .head {
   height: 20% !important;
 }
+/*
 .choices {
   margin-top: 30px;
 }
@@ -226,15 +237,54 @@
 .choices .el-button {
   width: 10%;
   margin-left: 3% !important;
-  /*background-color: #E4C2A2;*/
+
 }
 .add {
-  background-color: #e4c2a2 !important;
-  color: #000;
+ background-color: #006eff!important;
+  width:150px;
+        padding:0px !important;
+
 }
 .search {
-  background-color: #b2baa9 !important;
+  background-color: #006eff !important;
+  width:150px;
+        padding:0px !important;
 }
+*/
+.choices {
+  display: flex;
+  justify-content: center; /* 将内容水平居中 */
+  align-items: center; /* 将内容垂直居中 */
+  margin-top: 30px;
+}
+
+.choices {
+  display: flex;
+  justify-content: center; /* 将内容水平居中 */
+  align-items: center; /* 将内容垂直居中 */
+  margin-top: 30px;
+}
+
+.choices .el-select {
+  width: 30%; /* 缩小宽度 */
+  height: 40px; /* 统一设置高度 */
+  margin-right: 20px; /* 增加右侧外边距，调整 <el-select> 之间的间距 */
+}
+
+.choices .el-button {
+  width: 8%; /* 将按钮的宽度缩小为当前宽度的一半 */
+  height: 40px; /* 统一设置高度 */
+  line-height: 40px; /* 垂直居中按钮内容 */
+  margin-left: 20px; /* 增加左侧外边距，调整按钮之间的间距 */
+}
+
+.add, .search {
+  background-color: #006eff !important;
+  padding: 0px !important;
+}
+
+
+
 .searchResult {
   background-color: #fff9f0;
   overflow: hidden;
@@ -277,4 +327,5 @@
   color: #000;
   text-decoration: none;
 }
+
 </style>
