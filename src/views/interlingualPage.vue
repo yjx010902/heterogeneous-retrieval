@@ -6,7 +6,7 @@
             </a>
             <h1>面向复杂文档数据的跨语种信息检索</h1>
             <el-input placeholder="请输入内容" v-model="searchValue">
-                <el-button  slot="append" @click="startSearch">搜索</el-button>
+                <el-button  slot="append"  icon="el-icon-search" @click="startSearch"></el-button>
             </el-input>
         </div>
         <div class="foot" v-if="searchResult.length!=' '">
