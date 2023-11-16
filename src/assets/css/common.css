@@ -9,7 +9,6 @@ body{
     width: 100%;
 }
 .main{
-    height: 100%;
     width:100%;
     position: absolute;
     top: 0;
@@ -18,9 +17,28 @@ body{
     right: 0;
     margin: auto;
     /*background-color: #FFF9F0;*/
-    background-image:url("~@/assets/background.png");
+    background:url("~@/assets/background.png") no-repeat;
     background-size:100% 100%;
+    background-attachment:fixed;
 }
+
+/*分页面要使用的css*/
+.main1{
+    width:100%;
+    /*position: absolute;*/
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    /*background-color: #FFF9F0;*/
+    background:url("~@/assets/background.png") no-repeat;
+    background-size:100% 100%;
+    background-attachment:fixed;
+}
+
+
+
 .head{
     height:35%;
     /*margin-top: 8%;*/
@@ -93,7 +111,7 @@ body{
 }
 
 .foot{
-    margin-top:20px;
+        margin-top:20px;
         background-color: rgba(255,255,255,30%);
         border:3px solid #fff;
         margin-left:10%;
