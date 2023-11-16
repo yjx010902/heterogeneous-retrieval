@@ -67,9 +67,9 @@ body{
 }
 .head {
     .el-input {
-    margin-left: 10%;
+    margin-left: 15%;
     margin-top: 30px;
-    width: 80%;
+    width: 70%;
     height: 45px;
     border-right: 10px;
 }
@@ -78,20 +78,22 @@ body{
 /*    padding-right: 1px !important;*/
 /*}*/
     .el-input__inner{
-    border:2px solid #006eff;
+        box-sizing:border-box;
+        border:2px solid #006eff;
     /*border-image:linear-gradient(140deg,#1aadfe,#006eff);*/
-        background-color: #EBF0F2 !important;
+        background-color: rgba(255,255,255,60%) !important;
         border-radius: 10px 0px 0px 10px!important;
         height: 45px;
     }
     .el-button{
         width:150px;
         padding:0px !important;
-
+        color:#fff;
     }
 
     .el-input-group__append{
         background-color: #006eff;
+        color:white;
         border-radius: 0px 10px 10px 0px !important;
         /*background-color: #E4C2A2 !important;*/
     }
