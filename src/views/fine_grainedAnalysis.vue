@@ -6,9 +6,12 @@
             </a>
             <h1>面向大规模复杂文档数据的细粒度检索</h1>
             <el-input placeholder="请输入内容" v-model="searchValue">
-                <el-button slot="append" @click="startSearch">搜索</el-button>
+                <el-button slot="append"  icon="el-icon-search"  @click="startSearch"></el-button>
             </el-input>
         </div>
+      <div class="foot" v-if="searchResult.length==' '">
+
+
       <div class="margin">
     <div class="title">检索结果</div>
     <div class="text">
@@ -21,6 +24,7 @@
       </ul>
     </div>
   </div>
+         </div>
   <el-dialog
         title="文件预览"
         :visible.sync="fileDialogVisible"
@@ -85,5 +89,13 @@
 
 </style>
 <style>
+.foot{
+    margin-top:20px;
+        background-color: rgba(255,255,255,30%);
+        border:3px solid #fff;
+        margin-left:10%;
+        width:80%;
+        border-radius: 25px;
+    }
 
 </style>

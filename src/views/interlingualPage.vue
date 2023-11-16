@@ -10,6 +10,7 @@
             </el-input>
         </div>
         <div class="foot" v-if="searchResult.length!=' '">
+
         <div class="margin">
             <div class="title">文本翻译</div>
             <div class="text" v-html="this.translation">
@@ -30,6 +31,7 @@
             </div>
         </div>
         </div>
+
       <el-dialog
         title="文件预览"
         :visible.sync="fileDialogVisible"

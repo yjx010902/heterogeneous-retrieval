@@ -121,43 +121,48 @@ body{
 
 /*黄色页面*/
 .u_page .title{
-    background-color:  #E4C2A2;
+  /*  background-color:  #E4C2A2;*/
 }
 .u_page .head{
 .el-button{
-    color:#fff;
-    background-color: #E4C2A2;
+    width:150px;
+        padding:0px !important;
 
 }
 .el-input-group__append{
-    background-color: #E4C2A2 !important;
+     background-color: #006eff;
+        border-radius: 0px 10px 10px 0px !important;
 }
 }
 
 
 /*绿色页面*/
 .m_page .title{
-    background-color: #B2BAA9;
+   /* background-color: #B2BAA9;*/
 }
 .m_page .head{
 .el-button{
-    background-color: #B2BAA9;
+     width:150px;
+        padding:0px !important;
 }
 .el-input-group__append{
-    background-color: #B2BAA9 !important;
+     background-color: #006eff;
+        border-radius: 0px 10px 10px 0px !important;
 }
 }
 
 /*粉色页面*/
 .fine_page .title{
-    background-color: #E5A19E;
+   /* background-color: #E5A19E;*/
 }
 .fine_page .head{
 .el-button{
-    background-color: #E5A19E;
+    width:150px;
+        padding:0px !important;
 }
 .el-input-group__append{
-    background-color: #E5A19E !important;
+     background-color: #006eff;
+        border-radius: 0px 10px 10px 0px !important;
 }
 }
 
