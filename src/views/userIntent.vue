@@ -55,8 +55,8 @@ export default {
       this.axios
         .post(
           // 该处为url
-          // "https://mock.apifox.com/m1/3018081-0-default/userIntent",
-            "http://192.168.13.26:5001/userIntent/getResult",
+          "https://mock.apifox.com/m1/3018081-0-default/userIntent",
+            // "http://192.168.13.26:5001/userIntent/getResult",
           {searchValue:this.searchValue},
         {headers: {'Content-Type': 'application/x-www-form-urlencoded'}}
         )
