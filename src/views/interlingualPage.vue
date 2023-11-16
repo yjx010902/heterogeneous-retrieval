@@ -1,5 +1,5 @@
 <template>
-    <div  class="main u_page">
+    <div  :class="searchResult.length==' ' ? 'main' : 'main1'">
         <div class="head ">
             <a href="javascript:void(0);" @click="returnMain" class="return">
                 <i class="el-icon-arrow-left"></i> <p>返回</p>
@@ -9,7 +9,8 @@
                 <el-button  slot="append" icon="el-icon-search" @click="startSearch"></el-button>
             </el-input>
         </div>
-       <div class="foot" v-if="searchResult.length==' '">
+        <div class="foot" v-if="searchResult.length!=' '">
+
         <div class="margin">
             <div class="title">文本翻译</div>
             <div class="text" v-html="this.translation">
@@ -29,7 +30,8 @@
                 </ul>
             </div>
         </div>
-       </div>
+        </div>
+
       <el-dialog
         title="文件预览"
         :visible.sync="fileDialogVisible"

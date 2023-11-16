@@ -9,7 +9,6 @@ body{
     width: 100%;
 }
 .main{
-    height: 100%;
     width:100%;
     position: absolute;
     top: 0;
@@ -18,9 +17,28 @@ body{
     right: 0;
     margin: auto;
     /*background-color: #FFF9F0;*/
-    background-image:url("~@/assets/background.png");
+    background:url("~@/assets/background.png") no-repeat;
     background-size:100% 100%;
+    background-attachment:fixed;
 }
+
+/*分页面要使用的css*/
+.main1{
+    width:100%;
+    /*position: absolute;*/
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    /*background-color: #FFF9F0;*/
+    background:url("~@/assets/background.png") no-repeat;
+    background-size:100% 100%;
+    background-attachment:fixed;
+}
+
+
+
 .head{
     height:35%;
     /*margin-top: 8%;*/
@@ -49,9 +67,9 @@ body{
 }
 .head {
     .el-input {
-    margin-left: 10%;
+    margin-left: 15%;
     margin-top: 30px;
-    width: 80%;
+    width: 70%;
     height: 45px;
     border-right: 10px;
 }
@@ -60,20 +78,22 @@ body{
 /*    padding-right: 1px !important;*/
 /*}*/
     .el-input__inner{
-    border:2px solid #006eff;
+        box-sizing:border-box;
+        border:2px solid #006eff;
     /*border-image:linear-gradient(140deg,#1aadfe,#006eff);*/
-        background-color: #EBF0F2 !important;
+        background-color: rgba(255,255,255,60%) !important;
         border-radius: 10px 0px 0px 10px!important;
         height: 45px;
     }
     .el-button{
         width:150px;
         padding:0px !important;
-
+        color:#fff;
     }
 
     .el-input-group__append{
         background-color: #006eff;
+        color:white;
         border-radius: 0px 10px 10px 0px !important;
         /*background-color: #E4C2A2 !important;*/
     }
@@ -93,7 +113,7 @@ body{
 }
 
 .foot{
-    margin-top:20px;
+        margin-top:20px;
         background-color: rgba(255,255,255,30%);
         border:3px solid #fff;
         margin-left:10%;

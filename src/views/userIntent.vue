@@ -1,5 +1,5 @@
 <template>
-  <div class="main ">
+  <div :class="searchResult.length==' ' ? 'main' : 'main1'" >
     <div class="head">
       <a href="javascript:void(0);" @click="returnMain" class="return">
         <i class="el-icon-arrow-left"></i>
@@ -10,7 +10,7 @@
         <el-button slot="append"  icon="el-icon-search" @click="startSearch"></el-button>
       </el-input>
     </div>
-    <div class="foot" v-if="searchResult.length==' '">
+    <div class="foot" v-if="searchResult.length!=' '">
       <div class="margin">
         <div class="title">类别</div>
         <div class="text" v-html="userType">
@@ -55,8 +55,8 @@ export default {
       this.axios
         .post(
           // 该处为url
-          // "https://mock.apifox.cn/m1/3018081-0-default/userIntent",
-            "http://192.168.13.26:5001/userIntent/getResult",
+          "https://mock.apifox.com/m1/3018081-0-default/userIntent",
+            // "http://192.168.13.26:5001/userIntent/getResult",
           {searchValue:this.searchValue},
         {headers: {'Content-Type': 'application/x-www-form-urlencoded'}}
         )
